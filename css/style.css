@@ -46,7 +46,7 @@ ul {
 .sections {
   padding: 94px 0;
 }
-.header-sections {
+.header {
   border-bottom: 1px solid rgba(236, 236, 236, 1);
 }
 .txt-bl {
@@ -589,27 +589,21 @@ a.current::after {
   justify-content: center;
   align-items: center;
   background-color: var(--accent-color);
-  width: 200px;
-  height: 50px;
-  margin-right: 10px;
+  color: var(--accent-text-color);
+  font-weight: bold;
+  font-size: 16px;
+  letter-spacing: 0.06em;
+  line-height: 30px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 25px;
+  padding-right: 25px;
   border: none;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   border-radius: 4px;
   cursor: pointer;
-}
-.footer-form-btn-text {
-  color: var(--accent-text-color);
-  font-weight: bold;
-  font-size: 16px;
-  line-height: 30px;
-  margin-right: 10px;
-/* identical to box height, or 187% */
+  }
 
-display: flex;
-align-items: center;
-text-align: center;
-letter-spacing: 0.06em;
-}
 /* Portfilio*/
 .all-port-sections {
   padding-top: 94px;
@@ -773,7 +767,7 @@ h4 {
   min-width: 528px;
   min-height: 581px;
   background-color: var(--accent-text-color);
-  padding: 10px;
+  padding: 40px;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
   
@@ -792,12 +786,13 @@ h4 {
   border-radius: 50%;
   cursor: pointer;
   background-color: transparent;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  
   
 }
-
-.modal-form {
-  padding: 40px;
-  
+.btn-close:hover,
+.btn-close:focus {
+  fill: var(--accent-color);
 }
 .title-send {
 font-size: 20px;
@@ -806,6 +801,7 @@ line-height: 1.172;
 letter-spacing: 0.03em;
 text-align: center;
 color: #212121;
+margin: 0;
 }
 .field-form {
   display: flex;
@@ -849,15 +845,12 @@ color: #212121;
 }
 
 .checkbox {
+  appearance: none;
   position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  border: 0;
-  clip: rect(0 0 0 0);
-  overflow: hidden;
-  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+}
+.checkbox:focus + .checkbox-icon {
+  border-color: var(--accent-color);
 }
 .checkbox-icon {
   display: inline-block;
@@ -866,15 +859,22 @@ color: #212121;
   margin-right: 7px;
   border: 2px solid var(--heading-text-color);
   border-radius: 2px;
+  appearance: none;
   transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-  
+.checkbox-icon:hover,
+.checkbox-icon:focus {
+  color: var(--accent-color);
+}
 .checkbox:checked + .checkbox-icon {
   background-color: var(--accent-color);
   border-color: var(--accent-color);
   background-image: url(../images/done.svg);
   background-size: contain;
-  background-origin: border-box;
+  border-radius: 2px;
+  background-origin: content-box;
+  background-repeat: no-repeat;
+  background-position:center
 }
 .form-input {
   position: relative;
@@ -895,8 +895,10 @@ textarea:focus {
   border-color: var(--accent-color);
   outline: none;
 }
-label.policy {
+.policy {
   display: flex;
+  justify-content: center;
+  text-align: center;
   align-items: center;
   font-size: 14px;
   line-height: 1.71;
